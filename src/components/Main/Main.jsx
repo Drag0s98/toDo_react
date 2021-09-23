@@ -34,11 +34,12 @@ class Main extends Component {
 
   }
   tacharOne = (key) => {
-    this.state.task.filter((current, i) => i !== key)
-    this.setState({ task: { done: true } })
-    console.log(this.state.task[key].done);
+    const filtrar = this.state.task.filter((current, i) => i === key)
+    filtrar[0].done === false ? filtrar[0].done = true : filtrar[0].done = false;
+    this.setState(filtrar)
   }
   paintTasks = () => {
+    console.log(this.state);
     return this.state.task.map((param, i) => <Task info={param} key={i} remove={() => this.removeOne(i)} tachar={() => this.tacharOne(i)} />)
   }
   removeAll = () => {
