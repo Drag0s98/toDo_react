@@ -78,7 +78,7 @@ class Tasks extends Component {
       <section>
         <article className='form'>
           <>
-            <h2>Anade una tarea</h2>
+            <h2>Añade una tarea</h2>
             <form onSubmit={this.addTask} >
               <div className='oculto' ref={this.alert2}>
                 <Alert variant="danger">
@@ -93,9 +93,9 @@ class Tasks extends Component {
               </InputGroup>
               <label>Introduce la fecha</label>
               <input type="date" name='date' />
-              <Button type='submit' variant="primary" size="lg" active>
+             <Button type='submit' variant="primary" size="lg" active>
                 ADD
-              </Button>
+              </Button> 
             </form>
           </>
         </article>

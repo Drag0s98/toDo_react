@@ -1,0 +1,15 @@
+.bodyCard {
+  margin-top: 2em;
+  width: 18rem;
+  background-color: #e7dbd8;
+  border: 1px groove rgb(255, 255, 255);
+  -webkit-box-shadow: 1px 1px 18px 0px rgba(50, 50, 50, 0.56);
+  -moz-box-shadow: 1px 1px 18px 0px rgba(50, 50, 50, 0.56);
+  box-shadow: 1px 1px 18px 0px rgba(50, 50, 50, 0.56);
+}
+
+@media (min-width: $breakpoint-pc) {
+    .bodyCard{
+        width: 36rem;
+    }
+}

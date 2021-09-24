@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import axios from 'axios'
-import { InputGroup, FormControl } from "react-bootstrap";
+import { InputGroup, FormControl, Button, Card } from "react-bootstrap";
+import './Weather.css'
 
 class Weather extends Component {
 
   constructor(props) {
     super(props)
+    this.card = React.createRef();
+
     this.state = {
       weatherMain: [],
       temp: [],
       hour: [],
-      city: {}
+      city: [],
+      img: []
     }
   }
 
@@ -33,7 +37,11 @@ class Weather extends Component {
   }
   handlerLoadWeather = async () => {
     if (JSON.stringify(this.state.city) !== '{}') {
+      this.card.current.className = 'mostrar'
       let city = this.state.city
+      let randomNum = Math.floor(Math.random() * (5 - 0)) + 0;
+      const resp2 = await axios.get(`https://api.unsplash.com/search/photos?query=${city}&client_id=mM4Ee8aPNxPaRoav5j3jQkPwziksRyJSCnlbOTkcHSA`)
+      const img = await resp2.data.results[randomNum].urls.full
       const resp = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=a69cbc1aabd9c49868b9e1f91c10695a`)
       const data = await resp.data
       let hour = new Date().getHours();
@@ -45,7 +53,8 @@ class Weather extends Component {
       this.setState({
         weatherMain: weatherCity,
         temp: temp,
-        hour: completeHour
+        hour: completeHour,
+        img: img
       })
 
     }
@@ -54,38 +63,46 @@ class Weather extends Component {
     event.preventDefault();
     const city = await event.target.elements.city.value
     this.setState({ city: city })
-
     await this.handlerLoadWeather()
-
   }
-
+  gracias = async ( ) => {
+    alert('Gracias por la visita')
+  }
 
   render() {
     return (
       <section>
-        <form onSubmit={this.search}>
-          <label>Introduce una ciudad</label>
-          <InputGroup className="mb-3">
-            <InputGroup.Text id="inputGroup-sizing-default">City</InputGroup.Text>
-            <FormControl
-              name="city"
-              placeholder='Madrid'
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-            />
-          </InputGroup>
-          <input type="submit" value="Search" />
-        </form>
-        
-        <p>
-          {this.state.weatherMain}
-        </p>
-        <p>
-          {this.state.temp}
-        </p>
-        <p>
-          {this.state.hour}
-        </p>
+        <article>
+          <form onSubmit={this.search}>
+            <label>Introduce una ciudad</label>
+            <InputGroup className="mb-3">
+              <InputGroup.Text id="inputGroup-sizing-default">City</InputGroup.Text>
+              <FormControl
+                name="city"
+                placeholder='Madrid'
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+              />
+            </InputGroup>
+            <Button type='submit' variant="primary" size="lg" active>
+              Search
+            </Button>
+          </form>
+        </article>
+        <article className='bodyCard'>
+          <Card  className='oculto' ref={this.card}>
+            <Card.Img variant="top" src={this.state.img} />
+            <Card.Body>
+              <Card.Title>{this.state.city}</Card.Title>
+              <Card.Text>
+                The themperature in {this.state.city} its {this.state.temp} <br />
+                and the weather is {this.state.weatherMain}. <br />
+                The local hour is {this.state.hour}
+              </Card.Text>
+              <Button variant="primary" onClick={this.gracias}>❤</Button>
+            </Card.Body>
+          </Card>
+        </article>
       </section>
     )
   }
@@ -106,3 +123,7 @@ export default Weather;
   }
 }
  */
+
+// https://api.unsplash.com/photos/?client_id=mM4Ee8aPNxPaRoav5j3jQkPwziksRyJSCnlbOTkcHSA
+
+// https://api.unsplash.com/search/photos?query=barcelona&client_id=mM4Ee8aPNxPaRoav5j3jQkPwziksRyJSCnlbOTkcHSA
