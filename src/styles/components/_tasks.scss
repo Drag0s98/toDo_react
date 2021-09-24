@@ -1,0 +1,107 @@
+.mostrar{
+    display: block !important;
+    
+}
+.oculto{
+    & > div {
+        display: none;
+    }
+}
+main{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+
+}
+section {
+  @include cards-column-center;
+}
+.form {
+    @include cards-column-center;
+  
+    & > form {
+      @include cards-column-center;
+  
+      & > label {
+        font-size: 1.5em;
+      }
+  
+      & > input {
+        width: 48%;
+      }
+  
+      & > button {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        width: 5em;
+        height: 2em;
+        background-color: #444140 !important;
+      }
+      & > div {
+        display: flex !important;
+        flex-direction: column !important;
+  
+        & > input {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+  .cards {
+    @include cards-column-center;
+  
+    & > h3 {
+      margin-bottom: 2rem;
+    }
+    & > article > div {
+      background-color: #f7ebe8;
+      border: 0;
+    }
+    & > article > div > div {
+      background-color: #ffa987;
+      margin-top: 1.5em;
+      border-radius: 10px;
+  
+      & > button {
+        background-color: #f7ebe8;
+        border-color: #1e1e24;
+        color: black;
+      }
+      & > button:hover {
+        background-color: #444140;
+        border-color: #444140;
+      }
+      & > button:active {
+        background-color: #444140;
+        border-color: #444140;
+      }
+      & > button:focus {
+        background-color: #444140;
+        border-color: #444140;
+      }
+    }
+  }
+  
+  @media (min-width: $breakpoint-pc) {
+    .cards {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      width: 70%;
+
+      & > article {
+        margin-left: 2em;
+        
+        & > div > div {
+          width: 300px;
+          height: 250px;
+
+        }
+      }
+    }
+  }
+  

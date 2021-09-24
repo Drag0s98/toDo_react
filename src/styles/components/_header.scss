@@ -1,0 +1,24 @@
+.header {
+ width: 100%;
+ 
+  & > div {
+    background-color: #1E1E24 !important; 
+  }
+  & > div > nav{
+    background-color: #1E1E24 !important; 
+    border-radius: 10px;
+    z-index: 10;
+  } 
+  & > div > nav > div > button {
+        border-color: #FDFCDC !important;
+  }
+  & > div > nav > div > div > div > a{
+    border-bottom: 1px groove rgba(160, 159, 159, 0.247);
+}
+  & > div > nav > div > button > span{
+    border-color: #FDFCDC !important;
+}
+}
+h1{
+  margin-top: 1em;
+}

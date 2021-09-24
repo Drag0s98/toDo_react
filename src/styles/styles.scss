@@ -1,4 +1,16 @@
 @import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
+
+@import './utils/mixins';
+@import './utils/variables.scss';
 
 
-@import './views/app'
+@import './views/app';
+@import './components/header';
+@import './components/footer';
+@import './components/main';
+@import './components/tasks';
+@import './components/error';
+
+
+
