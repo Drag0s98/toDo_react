@@ -20,7 +20,7 @@ class Weather extends Component {
 
   async componentDidMount() {
     if (JSON.stringify(this.state.city) === '{}') {
-      const resp = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=praga&units=imperial&appid=a69cbc1aabd9c49868b9e1f91c10695a`)
+      const resp = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=praga&units=imperial&appid=${process.env.REACT_APP_API_WEATHER}`)
       const data = await resp.data
       let hour = new Date().getHours();
       let minutes = new Date().getMinutes();
@@ -40,9 +40,9 @@ class Weather extends Component {
       this.card.current.className = 'mostrar'
       let city = this.state.city
       let randomNum = Math.floor(Math.random() * (5 - 0)) + 0;
-      const resp2 = await axios.get(`https://api.unsplash.com/search/photos?query=${city}&client_id=mM4Ee8aPNxPaRoav5j3jQkPwziksRyJSCnlbOTkcHSA`)
+      const resp2 = await axios.get(`https://api.unsplash.com/search/photos?query=${city}&client_id=${process.env.REACT_APP_API_IMG}`)
       const img = await resp2.data.results[randomNum].urls.full
-      const resp = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=a69cbc1aabd9c49868b9e1f91c10695a`)
+      const resp = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.REACT_APP_API_WEATHER}`)
       const data = await resp.data
       let hour = new Date().getHours();
       let minutes = new Date().getMinutes();

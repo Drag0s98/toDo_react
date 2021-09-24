@@ -37,9 +37,3 @@ class Task extends Component {
   }
 }
 export default Task;
-
-{/* <h5>Tarea para el: {date}</h5>
-<p> {tarea} </p>
-<p>{desc}</p>
-<button onClick={this.props.remove}>Borrar</button>
-<button onClick={this.props.tachar}>Tachar</button> */}

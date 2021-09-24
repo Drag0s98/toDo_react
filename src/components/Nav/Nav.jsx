@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
-import NavDropdown  from "react-bootstrap/NavDropdown";
 import Nav from 'react-bootstrap/Nav'
 
 class NavClass extends Component {

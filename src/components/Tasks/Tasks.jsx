@@ -21,7 +21,6 @@ class Tasks extends Component {
   async componentDidMount() {
     this.setState({ data: this.state.task }) //Esto es una precarga de datos 
     await new Promise(resolve => setTimeout(resolve, 20000)) //Añadimos un timer de 20 segundos
-    console.log(this.task.current.value);
     if (this.task.current.value !== null) {
       this.task.current.value = '' //Posteriormente se borra
     }
@@ -31,7 +30,6 @@ class Tasks extends Component {
     const tarea = this.task.current.value
     const date = event.target.elements.date.value
     const desc = event.target.elements.desc.value
-    console.log(desc);
     const done = false;
     if (this.task.current.value !== null) {
       this.task.current.value = ''
